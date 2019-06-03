@@ -19,8 +19,8 @@ router.get('/:userId', (req, res) => {
 
 router.get('/next/:userId', (req, res) => {
   try {
-    const queue = Queue.getById(req.params.id);
-    res.status(200).json(queue.queue.shift());
+    const queue = Queue.getById(User.getById(req.params.userId).queueId);
+    res.status(200).json(User.getById(queue.queue.shift()));
   } catch (err) {
     if (err.name === 'ValidationError') {
       res.status(400).json(err.extra);
@@ -32,9 +32,10 @@ router.get('/next/:userId', (req, res) => {
 
 router.post('/:userId', (req, res) => {
   try {
-    const user = User.getById(req.params.userId);
-    user.queueId = Queue.create(req.body);
-    res.status(201).json(Queue.getById(user.queueId));
+    const item = Object.assign({}, req.body, { queue: [] });
+    const queue = Queue.create(item);
+    User.update(req.params.userId, { queueId: queue.id });
+    res.status(201).json(queue);
   } catch (err) {
     if (err.name === 'ValidationError') {
       res.status(400).json(err.extra);
@@ -44,11 +45,11 @@ router.post('/:userId', (req, res) => {
   }
 });
 
-router.put('./:id', (req, res) => {
+router.put('/:userId', (req, res) => {
   try {
-    const user = User.getById(req.params.id);
-    user.queueId = Queue.create(req.body);
-    res.status(200).json(Queue.getById(user.queueId));
+    const queue = Queue.getById(User.getById(req.params.userId).queueId);
+    queue.queue.push(req.body.userId);
+    res.status(200).json('ok');
   } catch (err) {
     if (err.name === 'ValidationError') {
       res.status(400).json(err.extra);
