@@ -1,0 +1,17 @@
+<div class="form-container">
+  <mat-label style="margin-right: 20px">Jour</mat-label>
+  <mat-form-field style="margin-right: 12px">
+    <input matInput [matDatepicker]="datePicker1" placeholder="Choisissez une date" [(ngModel)]="date">
+    <mat-datepicker-toggle matSuffix [for]="datePicker1"></mat-datepicker-toggle>
+    <mat-datepicker #datePicker1></mat-datepicker>
+  </mat-form-field>
+  <br>
+  <mat-label style="margin-right: 20px">Heure de début</mat-label>
+  <mat-form-field style="margin-right: 12px">
+    <input type="text" [(ngModel)]="startHour"/>
+  </mat-form-field>
+  <mat-label style="margin-right: 20px">Heure de fin</mat-label>
+  <mat-form-field style="margin-right: 12px">
+    <input type="text" [(ngModel)]="endHour"/>
+  </mat-form-field>
+</div>>

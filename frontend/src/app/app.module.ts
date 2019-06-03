@@ -50,6 +50,10 @@ import { StudentFilterListComponent } from './students/student-filter-list/stude
 import { ReminderPopUpComponent } from './reminders/reminder-pop-up/reminder-pop-up.component';
 import { ReminderPopUpItemComponent } from './reminders/reminder-pop-up-item/reminder-pop-up-item.component';
 import {AppointmentComponent} from './appointments';
+import {AppointmentListComponent} from './appointments/appointment-list';
+import {AppointmentAvailableComponent} from './appointments/appointment-available';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import {AmazingTimePickerModule} from 'amazing-time-picker';
 
 @NgModule({
   declarations: [
@@ -81,7 +85,9 @@ import {AppointmentComponent} from './appointments';
     FiltersFormComponent,
     StudentFilterListComponent,
     ReminderPopUpItemComponent,
-    AppointmentComponent
+    AppointmentComponent,
+    AppointmentListComponent,
+    AppointmentAvailableComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +106,8 @@ import {AppointmentComponent} from './appointments';
     MatNativeDateModule,
     MatSelectModule,
     MatSliderModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    AmazingTimePickerModule
   ],
   entryComponents: [
     MailToButtonComponent,
