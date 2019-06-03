@@ -8,6 +8,7 @@ import {ColumnComponent} from './columns';
 import {AuthGuardService} from '../services/authGuard.service';
 import {RemindersComponent} from './reminders/reminders.component';
 import {FiltersComponent} from './filters/filters.component';
+import {AppointmentComponent} from './appointments';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -19,7 +20,7 @@ const routes: Routes = [
   {path: 'columns', component: ColumnComponent, canActivate: [AuthGuardService]},
   {path: 'reminders', component: RemindersComponent, canActivate: [AuthGuardService]},
   {path: 'mails', component: MailListComponent, canActivate: [AuthGuardService]},
-
+  {path: 'appointments', component: AppointmentComponent, canActivate: [AuthGuardService]},
   {path: '**', redirectTo: ''}
 ];
 

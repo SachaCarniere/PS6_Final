@@ -49,6 +49,7 @@ import { FiltersFormComponent } from './filters/filters-form/filters-form.compon
 import { StudentFilterListComponent } from './students/student-filter-list/student-filter-list.component';
 import { ReminderPopUpComponent } from './reminders/reminder-pop-up/reminder-pop-up.component';
 import { ReminderPopUpItemComponent } from './reminders/reminder-pop-up-item/reminder-pop-up-item.component';
+import {AppointmentComponent} from './appointments';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { ReminderPopUpItemComponent } from './reminders/reminder-pop-up-item/rem
     FiltersListItemComponent,
     FiltersFormComponent,
     StudentFilterListComponent,
-    ReminderPopUpItemComponent
+    ReminderPopUpItemComponent,
+    AppointmentComponent
   ],
   imports: [
     BrowserModule,
