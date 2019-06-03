@@ -2,6 +2,8 @@ const cors = require('cors');
 const morgan = require('morgan');
 const express = require('express');
 const bodyParser = require('body-parser');
+const jwt = require('./utils/jwt');
+const errorHandler = require('./utils/error-handler');
 const api = require('./api');
 
 module.exports = (cb) => {
@@ -10,7 +12,9 @@ module.exports = (cb) => {
   app.use(cors());
   app.use(bodyParser.json({}));
   app.use(morgan('[:date[iso]] :method :url :status :response-time ms - :res[content-length]'));
+  app.use(jwt());
   app.use('/api', api);
+
   app.use('*', (req, res) => res.status(404).end());
   const server = app.listen(process.env.PORT || 9428, () => cb && cb(server));
 };

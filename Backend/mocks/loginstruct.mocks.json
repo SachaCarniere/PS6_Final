@@ -1,0 +1,14 @@
+[
+  {
+    "id": 0,
+    "emailAddress": "anne-marie.pinna@univ-cotedazur.fr",
+    "password": "azertyuiop",
+    "userId": 0
+  },
+  {
+    "id": 1,
+    "emailAddress": "user",
+    "password": "pns",
+    "userId": 1
+  }
+]
