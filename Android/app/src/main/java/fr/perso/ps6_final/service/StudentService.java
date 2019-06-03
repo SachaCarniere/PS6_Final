@@ -8,12 +8,12 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import fr.perso.ps6_final.listener.RequestListener;
 
 public class StudentService {
-    private String url = "https://raw.githubusercontent.com/ianbar20/JSON-Volley-Tutorial/master/Example-JSON-Files/Example-Object.JSON";
+    // TODO : CHANGE THAT WITH YOUR IP
+    private String url = "http://10.212.117.20:9428/api/queues/next/1559552732535";
 
     private Context context;
     private RequestListener listener;
@@ -28,14 +28,13 @@ public class StudentService {
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 response -> {
                     try {
-                        JSONObject obj = response.getJSONObject("colorObject");
-                        listener.onRequestSuccess(obj.getString("colorName"));
+                        listener.onRequestSuccess(response.getString("firstName"));
                     } catch (JSONException e) {
                         listener.onRequestFailure("Parsing Error");
                         e.printStackTrace();
                     }
                 },
-                error -> listener.onRequestFailure("Request Error")
+                error -> listener.onRequestFailure(error.toString())
         );
         queue.add(request);
     }
