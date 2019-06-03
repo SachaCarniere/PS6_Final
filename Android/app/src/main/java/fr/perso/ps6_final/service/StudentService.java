@@ -13,7 +13,7 @@ import fr.perso.ps6_final.model.Student;
 
 public class StudentService {
     // TODO : CHANGE THAT WITH YOUR IP
-    private String url = "http://10.212.117.20:9428/api/users/1559551606329";
+    private String url = "http://10.212.117.20:9428/api/queues/next/0";
 
     private Context context;
     private RequestListener listener;

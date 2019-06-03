@@ -7,4 +7,5 @@ module.exports = new BaseModel('User', {
   lastName: Joi.string().required(),
   emailAddress: Joi.string().required(),
   major: Joi.string().valid(['MAM', 'SI', 'ELEC', 'GE', 'GB', 'BAT']),
+  queueId: Joi.number(),
 });

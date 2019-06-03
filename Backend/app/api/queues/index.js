@@ -48,7 +48,7 @@ router.post('/:userId', (req, res) => {
 router.put('/:userId', (req, res) => {
   try {
     const queue = Queue.getById(User.getById(req.params.userId).queueId);
-    queue.queue.push(req.body.userId);
+    Queue.update(queue.id, queue.queue.push(req.body.userId));
     res.status(200).json('ok');
   } catch (err) {
     if (err.name === 'ValidationError') {
