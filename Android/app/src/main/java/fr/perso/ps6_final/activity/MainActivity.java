@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import fr.perso.ps6_final.R;
 import fr.perso.ps6_final.listener.RequestListener;
+import fr.perso.ps6_final.model.Student;
 import fr.perso.ps6_final.service.StudentService;
 
 public class MainActivity extends AppCompatActivity implements RequestListener {
@@ -31,8 +32,8 @@ public class MainActivity extends AppCompatActivity implements RequestListener {
     }
 
     @Override
-    public void onRequestSuccess(String response) {
-        nextStudentText.setText(response);
+    public void onRequestSuccess(Student response) {
+        nextStudentText.setText(response.getFirstName());
     }
 
     @Override
