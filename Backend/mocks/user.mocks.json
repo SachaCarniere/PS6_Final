@@ -1,0 +1,52 @@
+[
+  {
+    "firstName": "Sacha",
+    "lastName": "Carniere",
+    "email": "oui",
+    "password": "oui",
+    "id": 1559551535021
+  },
+  {
+    "firstName": "Armand",
+    "lastName": "Boulanger",
+    "email": "oui",
+    "password": "oui",
+    "id": 1559551549849
+  },
+  {
+    "firstName": "Valentin",
+    "lastName": "Campello",
+    "email": "oui",
+    "password": "oui",
+    "id": 1559551559795
+  },
+  {
+    "firstName": "Paul",
+    "lastName": "Londeix",
+    "email": "oui",
+    "password": "oui",
+    "id": 1559551568756
+  },
+  {
+    "firstName": "Loïc",
+    "lastName": "Bertin",
+    "email": "oui",
+    "password": "oui",
+    "id": 1559551585924
+  },
+  {
+    "firstName": "TO",
+    "lastName": "B",
+    "email": "oui",
+    "password": "oui",
+    "id": 1559551592082
+  },
+  {
+    "firstName": "Anne-Marie",
+    "lastName": "Pinna",
+    "email": "oui",
+    "password": "oui",
+    "id": 1559551606329,
+    "queueId": 1559552732535
+  }
+]
