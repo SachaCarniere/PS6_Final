@@ -1,0 +1,105 @@
+<h3>{{editing ? 'Modifiez' : 'Créez'}} votre filtre personnalisé </h3>
+<p>{{editing ? 'Modifiez' : 'Créez'}} un filtre personnalisé que vous pourrez appliquer sur la liste d'étudiant</p>
+
+<div class="form-container">
+  <mat-form-field>
+    <input matInput placeholder="Nom du filtre" [(ngModel)]="name">
+  </mat-form-field>
+
+  <div>
+    <mat-label style="margin-right: 20px">Favori</mat-label>
+    <mat-form-field style="margin-right: 12px">
+      <input matInput [matDatepicker]="datePicker1" placeholder="Choisissez une date de début" [(ngModel)]="startDate">
+      <mat-datepicker-toggle matSuffix [for]="datePicker1"></mat-datepicker-toggle>
+      <mat-datepicker #datePicker1></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field style="margin-right: 12px">
+      <input matInput [matDatepicker]="datePicker2" placeholder="Choisissez une date de fin" [(ngModel)]="endDate">
+      <mat-datepicker-toggle matSuffix [for]="datePicker2"></mat-datepicker-toggle>
+      <mat-datepicker #datePicker2></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-label>Filtrer par Année</mat-label>
+    <mat-checkbox [(ngModel)]="year3" class="margin" color="accent">3A</mat-checkbox>
+    <mat-checkbox [(ngModel)]="year4" class="margin" color="accent">4A</mat-checkbox>
+    <mat-checkbox [(ngModel)]="year5" class="margin" color="accent">5A</mat-checkbox>
+  </div>
+
+  <mat-label> Filtrer par Spécialité</mat-label>
+  <mat-selection-list [(ngModel)]="selectedMinors">
+    <mat-list-option *ngFor="let minor of minorEnum" [value]='minor.key' checkboxPosition="before">
+      {{minor.value}}
+    </mat-list-option>
+  </mat-selection-list>
+
+  <div>
+    <mat-label>Filtrer par Statut</mat-label>
+    <mat-checkbox [(ngModel)]="statusClass" class="margin" color="accent">En Cours</mat-checkbox>
+    <mat-checkbox [(ngModel)]="statusIntern" class="margin" color="accent">En Stage</mat-checkbox>
+    <mat-checkbox [(ngModel)]="statusGapYear" class="margin" color="accent">Année de Césure</mat-checkbox>
+  </div>
+
+  <mat-form-field>
+    <mat-label>Filtrer par Pays</mat-label>
+    <mat-select [(ngModel)]="location">
+      <mat-option [value]="">-</mat-option>
+      <mat-option *ngFor="let country of countryArray" [value]="country.value">
+        {{country.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-label>Filtrer par jour à l'étranger</mat-label>
+  <mat-slide-toggle class="example-margin" [(ngModel)]="moreThan">Etudiants
+    ayant {{(moreThan) ? "au moins" : "au plus" }} {{daysAbroad.toString(10)}} jour à l'étranger :
+  </mat-slide-toggle>
+  <mat-slider min="0" max="40" step="5" [(ngModel)]="daysAbroad" [thumbLabel]=true></mat-slider>
+
+  <button type="button" class="btn btn-light" *ngIf="editing" (click)="onBack()"> Retour</button>
+  <button type="button" class="btn btn-light" *ngIf="editing" (click)="onEdit()"> Modifier</button>
+  <button type="button" class="btn btn-light" *ngIf="!editing" (click)="onCreate()"> Créer</button>
+
+</div>
+
+<!--<form [formGroup]="filterForm">
+  <div class="form-group row">
+    <label for="name" class="col-lg-3"> Nom de la sélection </label>
+    <input type="text" class="form-control name-input" id="name" [formControlName]="'name'"/>
+  </div>
+
+  <div class="form-group row" [formGroupName]="'date'">
+    <p class="col-lg-3"> Favoris </p>
+    <label for="startDate" class="du"> du </label>
+    <input type="date" class="form-control date-input" id="startDate" [formControlName]="'startDate'"/>
+    <label for="endDate" class="au"> au </label>
+    <input type="date" class="form-control date-input" id="endDate" [formControlName]="'endDate'"/>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-lg-3"> Filtrer par Années </label>
+      <mat-checkbox class="margin" [formControlName]="'year3'" color="accent">3</mat-checkbox>
+      <mat-checkbox class="margin" [formControlName]="'year4'" color="accent">4</mat-checkbox>
+      <mat-checkbox class="margin" [formControlName]="'year5'" color="accent">5</mat-checkbox>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-lg-2"> Filtrer par Spécialité </label>
+      <mat-selection-list [formControlName]="'selectedMinors'" (selectionChange)="selectedOptions = $event.source.selectedOptions.selected">
+        <mat-list-option *ngFor="let minor of minorEnum" [value]='minor.key' [selected]='selectedMinors.includes(minor.key)' checkboxPosition="before">
+          {{minor.value}}
+        </mat-list-option>
+      </mat-selection-list>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-lg-3" for="daysAbroad"> Filtrer par Jour à l'étrangé </label>
+    <input type="text" class="form-control days-input" id="daysAbroad" [formControlName]="'daysAbroad'"/>
+  </div>
+
+  <button type="button" class="btn btn-light" *ngIf="editing" (click)="onBack()"> Retour </button>
+  <button type="button" class="btn btn-light" *ngIf="editing" (click)="onEdit()"> Modifier </button>
+  <button type="button" class="btn btn-light" *ngIf="!editing" (click)="onCreate()"> Créer </button>
+</form>-->

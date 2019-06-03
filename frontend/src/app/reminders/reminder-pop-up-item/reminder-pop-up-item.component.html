@@ -1,0 +1,6 @@
+<div *ngIf="!reminder.dismissed">
+  <h4>{{reminder.name}}</h4>
+  <p>{{reminder.message}}</p>
+  <mat-checkbox (change)="onDismissedChange()"> Ne plus afficher</mat-checkbox>
+  <hr>
+</div>

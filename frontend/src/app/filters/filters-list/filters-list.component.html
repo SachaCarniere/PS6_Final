@@ -1,0 +1,7 @@
+<h3>Vos Filtres</h3>
+<div *ngFor="let filter of filters">
+  <app-filters-list-item [filter]="filter"
+                         (filterFavorite)="swapFilterFavorite($event)"
+                         (filterSelected)="selectFilterToEdit($event)"
+                         (filterDeleted)="deleteFilter($event)"></app-filters-list-item>
+</div>

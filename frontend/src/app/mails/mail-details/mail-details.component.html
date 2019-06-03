@@ -1,0 +1,16 @@
+<h3>{{editing ? 'Modifiez' : 'Créez'}} votre mail </h3>
+<p>{{editing ? 'Modifiez' : 'Créez'}} un mail personnalisé que vous pourrez envoyer aux étudiants depuis la page "Etudiants"</p>
+<div class="form-container">
+  <mat-form-field>
+    <input matInput placeholder="Objet du mail" [(ngModel)]="object">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Message</mat-label>
+    <textarea matInput [(ngModel)]="message" placeholder="Message" rows="12"></textarea>
+  </mat-form-field>
+
+  <button type="button" class="btn btn-light" *ngIf="editing" (click)="onBack()"> Retour</button>
+  <button type="button" class="btn btn-light" *ngIf="editing" (click)="onEdit()"> Modifier</button>
+  <button type="button" class="btn btn-light" *ngIf="!editing" (click)="onCreate()"> Créer</button>
+</div>

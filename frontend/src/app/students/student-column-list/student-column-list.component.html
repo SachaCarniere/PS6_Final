@@ -1,0 +1,14 @@
+<div class="card" id="main-card">
+  <div class="card-title"> Vos Colonnes </div>
+  <div class="card-body d-flex flex-wrap">
+    <div class="my-item">
+      <button type="button" class="btn btn-light" (click)="onDefault()"> Défaut </button>
+    </div>
+    <div class="my-item" *ngFor="let column of favoritesColumns">
+      <button type="button" class="btn btn-light" (click)="onClick(column.columnsToShow)"> {{column.name}} </button>
+    </div>
+    <div class="my-item">
+      <button type="button" class="btn btn-light" routerLink="/columns">+</button>
+    </div>
+  </div>
+</div>

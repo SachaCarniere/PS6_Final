@@ -1,0 +1,10 @@
+<div class="container d-flex">
+<div class="col-3">
+  <div class="mails" *ngFor="let mail of mailList">
+    <app-mail (mailHasBeenSelected)="mailHasBeenSelected($event)" (mailDeleted)="mailDelete($event)" [mail]="mail"></app-mail>
+  </div>
+</div>
+<div class="col offset-1">
+  <app-mail-details [mailSelected]="mailSelected" (return)="return($event)"></app-mail-details>
+</div>
+</div>

@@ -1,0 +1,6 @@
+<h2 mat-dialog-title>Rappelez-vous</h2>
+<div *ngFor="let reminder of reminders">
+  <app-reminder-pop-up-item [reminder]="reminder" (onChangeEmitter)="swapReminderDismissed($event)"></app-reminder-pop-up-item>
+</div>
+
+<button class="btn btn-light" (click)="dialogRef.close(remindersToEdit)">Quitter</button>

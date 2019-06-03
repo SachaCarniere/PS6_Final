@@ -1,0 +1,16 @@
+<div class="card" id="main-card">
+  <div class="card-title"> Vos Filtres </div>
+  <div class="card-body text-center">
+    <div class="my-item">
+      <button type="button" class="btn btn-light" (click)="onDefault()"> Défaut </button>
+    </div>
+    <div class="my-item" *ngFor="let filter of personalsFilters">
+      <button type="button" class="btn btn-light" (click)="onClick(filter)"> {{filter.name}} </button>
+    </div>
+    <div class="my-item">
+      <button type="button" class="btn btn-light" routerLink="/filters">+</button>
+    </div>
+  </div>
+</div>
+<div>
+</div>

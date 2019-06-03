@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>Envoyer un mail</h2>
+<div class="row">
+  <div class="col-3">
+    <div mat-dialog-content>
+      Choisissez le mail a envoyer aux étudiants
+      <div *ngFor="let mail of mails">
+        <app-mail-list-item [mail]="mail" (mailHasBeenSelected)="displayMailContent($event)"></app-mail-list-item>
+      </div>
+    </div>
+    <div mat-dialog-actions class="btn-group">
+      <button mat-button (click)="dialogRef.close()" class="btn btn-default">Annuler</button>
+      <!--<form action="mailto:{{mailToLink}}">
+        <input type="submit" value="Suivant">
+      </form>-->
+      <a href="mailto:{{mailToLink}}" (click)="dialogRef.close()" class="btn btn-primary">Suivant</a>
+    </div>
+  </div>
+
+  <div class="col offset-1">
+    <p>Mail selectionné</p>
+    <div class="mail-info">
+      <p>Objet :</p>
+      <h4>{{mailSelected.title}}</h4>
+      <p>Contenu :</p>
+      <p>{{mailSelected.message}}</p>
+    </div>
+  </div>
+</div>

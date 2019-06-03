@@ -1,0 +1,13 @@
+<div class="card d-flex">
+  <p class="card-title text-center">{{column.name}}</p>
+  <div class="btn-group">
+    <button type="button" class="btn btn-light" (click)="onFavorite()">
+      <img src="../../../assets/etoile.png" alt="Favori" *ngIf="!column.favorite"/>
+      <img src="../../../assets/etoilePleine.png" alt="Favori" *ngIf="column.favorite"/>
+    </button>
+    <button type="button" class="btn btn-light" (click)="onSelect()"><img src="../../../assets/engrenage.png"
+                                                                          alt="Modifier"></button>
+    <button type="button" class="btn btn-light" (click)="onDelete()"><img src="../../../assets/poubelle.png"
+                                                                          alt="Supprimer"></button>
+  </div>
+</div>

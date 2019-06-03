@@ -1,0 +1,35 @@
+<h3>{{editing ? 'Modifiez' : 'Créez'}} votre rappel </h3>
+<p>{{editing ? 'Modifiez' : 'Créez'}} un rappel qui s'affichera à lors de votre connexion pendant les dates choisies</p>
+
+<div class="form-container">
+  <mat-form-field>
+    <input matInput placeholder="Nom du rappel" [(ngModel)]="name">
+  </mat-form-field>
+
+  <div>
+    <mat-label style="margin-right: 20px">Rappel</mat-label>
+    <mat-form-field style="margin-right: 12px">
+      <input matInput [matDatepicker]="datePicker1" placeholder="Choisissez une date de début" [(ngModel)]="startDate">
+      <mat-datepicker-toggle matSuffix [for]="datePicker1"></mat-datepicker-toggle>
+      <mat-datepicker #datePicker1></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field style="margin-right: 12px">
+      <input matInput [matDatepicker]="datePicker2" placeholder="Choisissez une date de fin" [(ngModel)]="endDate">
+      <mat-datepicker-toggle matSuffix [for]="datePicker2"></mat-datepicker-toggle>
+      <mat-datepicker #datePicker2></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field>
+    <mat-label>Message</mat-label>
+    <textarea matInput [(ngModel)]="message" placeholder="Message"></textarea>
+  </mat-form-field>
+
+
+  <mat-checkbox [(ngModel)]="dismissed" color="accent">Afficher dans les rappels</mat-checkbox>
+
+  <button type="button" class="btn btn-light" *ngIf="editing" (click)="onBack()"> Retour</button>
+  <button type="button" class="btn btn-light" *ngIf="editing" (click)="onEdit()"> Modifier</button>
+  <button type="button" class="btn btn-light" *ngIf="!editing" (click)="onCreate()"> Créer</button>
+</div>

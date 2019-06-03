@@ -1,0 +1,13 @@
+<!--<button class="button" (click)="deleteMail()"><img src="../../../assets/poubelle.png" alt="Supprimer"></button>
+<div class="cell" data-title="title" (click)="selectMail()">{{mail.title}}</div>-->
+<div class="card d-flex">
+  <p class="card-title text-center"> {{mail.title}} </p>
+  <div class="btn-group">
+    <button type="button" class="btn btn-light" (click)="selectMail()">
+      <img src="../../../assets/engrenage.png" alt="Modifier">
+    </button>
+    <button type="button" class="btn btn-light" (click)="deleteMail()">
+      <img src="../../../assets/poubelle.png" alt="Supprimer">
+    </button>
+  </div>
+</div>

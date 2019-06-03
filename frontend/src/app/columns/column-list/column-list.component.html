@@ -1,0 +1,7 @@
+<h3>Vos colonnes</h3>
+<div *ngFor="let column of columns">
+  <app-column-list-item [column]=column
+                        (columnDelete)="deleteColumn($event)"
+                        (swapFavorite)="swapFavorite($event)"
+                        (columnSelected)="selectColumn($event)"></app-column-list-item>
+</div>

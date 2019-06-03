@@ -1,0 +1,6 @@
+<h3>Vos Rappels</h3>
+<div *ngFor="let reminder of remindersList">
+  <app-reminders-list-item [reminder]=reminder
+                           (reminderDeleted)="deleteReminder($event)"
+                           (reminderSelected)="selectReminder($event)"></app-reminders-list-item>
+</div>

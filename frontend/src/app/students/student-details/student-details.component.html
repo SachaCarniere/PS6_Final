@@ -1,0 +1,53 @@
+<div class="wrapper">
+  <button class="btn btn-light" (click)="goBack()">Retour</button>
+  <div class="wrapper2">
+    <h3 class="data" data-title="id">{{student.id}}</h3>
+    <h3 class="data" data-title="firstName">{{student.firstName}}</h3>
+    <h3 class="data" data-title="lastName">{{student.lastName}}</h3>
+    <div class="data" data-title="year">{{student.major}}{{student.year}}</div>
+    <div class="data" data-title="emailAddress">{{student.emailAddress}}</div>
+    <div class="data" data-title="minor">Spécialité : {{student.minorFullName}}</div>
+    <div class="data" data-title="status">Situation : {{student.statusFullName}}</div>
+    <div class="data" data-title="location">Localisation : {{student.locationFullName}}</div>
+    <div class="data" data-title="daysAbroad">Nombre de jours à l'étranger : {{student.daysAbroad}}</div>
+    <div class="select.container" *ngIf="isModifying">
+    <hr>
+    <form>
+      <label class="data" for="selectedDaysAbroad">Nouveau nombre de jours à l'étranger : </label>
+      <select name="selectedDaysAbroad" id="selectedDaysAbroad" [(ngModel)]="student.daysAbroad">
+        <option *ngFor="let nb of dayAbroadNbs" [value]="nb">
+          {{nb}}
+        </option>
+      </select>
+      <br>
+      <label class="data" for="selectStatus">Nouvelle situation : </label>
+      <select name="selectStatus" id="selectStatus" [(ngModel)]="student.status">
+        <option value="CLASS">En Cours</option>
+        <option value="INTERN">En Stage</option>
+        <option value="GAPYEAR">Année de Césure</option>
+      </select>
+      <br>
+      <label class="data" for="selectLocation">Nouvelle localisation : </label>
+      <select name="selectLocation" id="selectLocation" [(ngModel)]="student.location">
+        <option value="Germany">Allemagne</option>
+        <option value="Canada">Canada</option>
+        <option value="China">Chine</option>
+        <option value="Spain">Espagne</option>
+        <option value="USA">États-Unis</option>
+        <option value="France">France</option>
+        <option value="HK">Hong Kong</option>
+        <option value="Ireland">Irelande</option>
+        <option value="Italy">Italie</option>
+        <option value="Monaco">Monaco</option>
+        <option value="Poland">Polande</option>
+        <option value="UK">Royaume-Uni</option>
+      </select>
+      <button class="btn btn-light" type="submit" (click)="validate()">Valider</button>
+    </form>
+  </div>
+  <button class="btn btn-light" *ngIf="!isModifying" (click)="modifying()">Modifier</button>
+    <div class="data">{{this.modificationDate}}</div>
+  </div>
+  <a href="mailto:{{student.emailAddress}}" class="btn btn-light" style="display: block; margin: 0 40%">Envoyer un
+    mail</a>
+</div>

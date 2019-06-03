@@ -1,0 +1,47 @@
+<h3>{{editing ? 'Modifiez' : 'Créez'}} votre sélection personnalisée </h3>
+<p>{{editing ? 'Modifiez' : 'Créez'}} une sélection personnalisé de colonne que vous pourrez utiliser sur le tableau d'étudiant</p>
+
+<div class="form-container">
+  <mat-form-field>
+    <input matInput placeholder="Nom de la sélection" [(ngModel)]="name">
+  </mat-form-field>
+
+  <div>
+    <mat-label style="margin-right: 20px">Favori</mat-label>
+    <mat-form-field style="margin-right: 12px">
+      <input matInput [matDatepicker]="datePicker1" placeholder="Choisissez une date de début" [(ngModel)]="startDate">
+      <mat-datepicker-toggle matSuffix [for]="datePicker1"></mat-datepicker-toggle>
+      <mat-datepicker #datePicker1></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field style="margin-right: 12px">
+      <input matInput [matDatepicker]="datePicker2" placeholder="Choisissez une date de fin" [(ngModel)]="endDate">
+      <mat-datepicker-toggle matSuffix [for]="datePicker2"></mat-datepicker-toggle>
+      <mat-datepicker #datePicker2></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-label>Sélection des colonnes</mat-label>
+
+    <mat-checkbox [(ngModel)]="checkId" class="margin" color="accent">Numéro étudiant</mat-checkbox>
+    <mat-checkbox [(ngModel)]="firstName" class="margin" color="accent">Prénom</mat-checkbox>
+    <mat-checkbox [(ngModel)]="lastName" class="margin" color="accent">Nom</mat-checkbox>
+  </div>
+  <div>
+    <mat-checkbox [(ngModel)]="email" class="margin first" color="accent">Email</mat-checkbox>
+    <mat-checkbox [(ngModel)]="year" class="margin" color="accent">Année</mat-checkbox>
+    <mat-checkbox [(ngModel)]="daysAbroad" class="margin" color="accent">Jours à l'étranger</mat-checkbox>
+  </div>
+  <div>
+    <mat-checkbox [(ngModel)]="minor" class="margin first" color="accent">Spécialité</mat-checkbox>
+    <mat-checkbox [(ngModel)]="status" class="margin" color="accent">Status</mat-checkbox>
+    <mat-checkbox [(ngModel)]="location" class="margin" color="accent">Pays</mat-checkbox>
+  </div>
+
+
+  <button type="button" class="btn btn-light" *ngIf="editing" (click)="onBack()"> Retour</button>
+  <button type="button" class="btn btn-light" *ngIf="editing" (click)="onEdit()"> Modifier</button>
+  <button type="button" class="btn btn-light" *ngIf="!editing" (click)="onCreate()"> Créer</button>
+</div>
+

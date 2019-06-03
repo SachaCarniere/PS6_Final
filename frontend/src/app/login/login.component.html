@@ -1,0 +1,19 @@
+<div class="connexion">
+  <img src="../../assets/logoPolytech.png" alt="logo polytech"/>
+  <div class="form" [innerHTML]="">
+    <form class="login" [formGroup]="loginForm">
+      <label for="emailAddress">
+        Identifiant <br>
+        <input class="input-custom" type="text" id="emailAddress" [formControlName]="'emailAddress'">
+      </label>
+      <br>
+      <label for="password">
+        Mot de Passe<br>
+        <input class="input-custom" type="password" id="password" [formControlName]="'password'">
+      </label>
+      <br>
+      <button type="submit" class="btn-custom" (click)="logIn()">Connexion</button>
+      <div id="errorMessage"></div>
+    </form>
+  </div>
+</div>
