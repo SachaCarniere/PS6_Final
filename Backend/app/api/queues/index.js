@@ -17,6 +17,19 @@ router.get('/:userId', (req, res) => {
   }
 });
 
+router.get('/next/:userId', (req, res) => {
+  try {
+    const queue = Queue.getById(req.params.id);
+    res.status(200).json(queue.queue.shift());
+  } catch (err) {
+    if (err.name === 'ValidationError') {
+      res.status(400).json(err.extra);
+    } else {
+      res.status(500).json(err);
+    }
+  }
+});
+
 router.post('/:userId', (req, res) => {
   try {
     const user = User.getById(req.params.userId);
@@ -32,9 +45,17 @@ router.post('/:userId', (req, res) => {
 });
 
 router.put('./:id', (req, res) => {
-  const queue = Queue.getById(req.params.id);
-  res.status(200).json(queue.queue.pop());
+  try {
+    const user = User.getById(req.params.id);
+    user.queueId = Queue.create(req.body);
+    res.status(200).json(Queue.getById(user.queueId));
+  } catch (err) {
+    if (err.name === 'ValidationError') {
+      res.status(400).json(err.extra);
+    } else {
+      res.status(500).json(err);
+    }
+  }
 });
-
 
 module.exports = router;
