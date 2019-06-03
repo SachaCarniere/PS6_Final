@@ -1,8 +1,10 @@
 const { Router } = require('express');
-const TicketRouter = require('./tickets');
+const QueuesRouter = require('./queues');
+const UsersRouter = require('./users');
 
 const router = new Router();
 router.get('/status', (req, res) => res.status(200).json('ok'));
-router.use('/tickets', TicketRouter);
+router.use('/users', UsersRouter);
+router.use('/queues', QueuesRouter);
 
 module.exports = router;
