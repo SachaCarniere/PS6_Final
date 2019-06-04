@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements RequestListener {
     }
 
     @Override
-    public void onRequestSuccess(int number){
+    public void onRequestSuccess(String number){
         numberStudent.setText(number);
     }
 
