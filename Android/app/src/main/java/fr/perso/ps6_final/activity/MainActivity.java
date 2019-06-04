@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements RequestListener {
 
     private TextView nextStudentText;
     private Button nextStudentButton;
+    private TextView numberStudent;
 
 
     @Override
@@ -25,16 +26,23 @@ public class MainActivity extends AppCompatActivity implements RequestListener {
         setContentView(R.layout.activity_main);
 
         nextStudentText = findViewById(R.id.main_next_student_text);
+        numberStudent = findViewById(R.id.main_number);
 
         nextStudentButton = findViewById(R.id.main_next_student_button);
         nextStudentButton.setOnClickListener(v -> {
             STUDENT_SERVICE.getNextStudent();
+            STUDENT_SERVICE.getLeftStudents();
         });
     }
 
     @Override
     public void onRequestSuccess(Student response) {
         nextStudentText.setText(response.getFirstName());
+    }
+
+    @Override
+    public void onRequestSuccess(int number){
+        numberStudent.setText(number);
     }
 
     @Override

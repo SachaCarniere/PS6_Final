@@ -5,6 +5,7 @@ import android.content.Context;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
@@ -13,8 +14,8 @@ import fr.perso.ps6_final.model.Student;
 
 public class StudentService {
     // TODO : CHANGE THAT WITH YOUR IP
-    private String url = "http://10.212.117.20:9428/api/queues/next/0";
-
+    private String url = "http://10.212.117.20:1880/next";
+    private String url2 = "http://10.212.117.20:1880/studentleft";
     private Context context;
     private RequestListener listener;
 
@@ -34,4 +35,18 @@ public class StudentService {
         );
         queue.add(request);
     }
+
+    public void getLeftStudents() {
+
+        RequestQueue queue = Volley.newRequestQueue(context);
+        StringRequest request =  new StringRequest(Request.Method.GET,url2,
+                response -> {
+             listener.onRequestSuccess(Integer.parseInt(response));
+        },
+            error -> listener.onRequestFailure(error.toString())
+        );
+        queue.add(request);
+    }
+
+
 }

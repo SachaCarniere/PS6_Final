@@ -27,4 +27,24 @@
         android:background="@drawable/buttonshape"
         />
 
+    <TextView
+        android:id="@+id/main_number_of_students_left"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Nombre d'étudiants restants :"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:layout_marginTop="500dp"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/main_number"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:layout_marginTop="550dp"
+        android:textColor="#54CCFF"/>
+
+
 </RelativeLayout>
