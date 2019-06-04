@@ -16,7 +16,3 @@ Scénarios Étudiant :
 Un étudiant se pose des questions concernant sa mobilité à l'international mais ne trouve pas de réponse sur internet. Il souhaite donc
 prendre rendez-vous avec son responsable pédagogique. Il va donc se rendre sur le site et se connecter avec ses identifiants.
 Il peut alors choisir un horaire de rendez-vous parmis les disponibilités de son responsable qui sera ensuite notifié par mail. 
-
-Un autre étudiant est dans le même cas, il tente de prendre un rendez-vous mais il n'y a plus d'horaires disponibles. Il sera 
-alors mis sur liste d'attente et sera notifié si un étudiant annule un rendez-vous ou si le responsable programme de nouveaux horaires
-de disponibilité.
