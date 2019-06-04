@@ -1,6 +1,6 @@
 package fr.perso.ps6_final.activity;
 
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
@@ -9,11 +9,13 @@ import android.widget.TextView;
 import fr.perso.ps6_final.R;
 import fr.perso.ps6_final.listener.RequestListener;
 import fr.perso.ps6_final.model.Student;
+import fr.perso.ps6_final.service.AuthService;
 import fr.perso.ps6_final.service.StudentService;
 
 public class MainActivity extends AppCompatActivity implements RequestListener {
 
     private final StudentService STUDENT_SERVICE = new StudentService(this, this);
+    private final AuthService AUTH_SERVICE = new AuthService();
 
     private TextView nextStudentText;
     private Button nextStudentButton;
@@ -24,6 +26,11 @@ public class MainActivity extends AppCompatActivity implements RequestListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (!AUTH_SERVICE.isConnected()) {
+            Intent intent = new Intent(this, AuthActivity.class);
+            startActivity(intent);
+        }
 
         nextStudentText = findViewById(R.id.main_next_student_text);
         numberStudent = findViewById(R.id.main_number);
@@ -41,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements RequestListener {
     }
 
     @Override
-    public void onRequestSuccess(String number){
+    public void onRequestSuccess(String number) {
         numberStudent.setText(number);
     }
 
