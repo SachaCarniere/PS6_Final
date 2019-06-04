@@ -8,7 +8,7 @@ function getQueuesByUser(userId) {
   const queues = Queue.get();
   const queuesForUser = [];
   for (let i = 0; i < queues.length; i += 1) {
-    if (queues[i].userId === userId) {
+    if (queues[i].userId.toString() === userId.toString()) {
       queuesForUser.push(queues[i]);
     }
   }
@@ -17,8 +17,7 @@ function getQueuesByUser(userId) {
 
 router.get('/:userId', (req, res) => {
   try {
-    const user = User.getById(req.params.userId);
-    res.status(200).json(getQueuesByUser(user.queueId));
+    res.status(200).json(getQueuesByUser(req.params.userId));
   } catch (err) {
     if (err.name === 'ValidationError') {
       res.status(400).json(err.extra);
