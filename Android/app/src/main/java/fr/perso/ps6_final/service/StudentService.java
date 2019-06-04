@@ -41,7 +41,7 @@ public class StudentService {
         RequestQueue queue = Volley.newRequestQueue(context);
         StringRequest request =  new StringRequest(Request.Method.GET,url2,
                 response -> {
-             listener.onRequestSuccess(Integer.parseInt(response));
+             listener.onRequestSuccess(response);
         },
             error -> listener.onRequestFailure2("Oopsi doopsie")
         );

@@ -7,7 +7,7 @@ public interface RequestListener {
 
     void onRequestFailure(String error);
 
-    void onRequestSuccess(int number);
+    void onRequestSuccess(String number);
 
     void onRequestFailure2(String error);
 }
