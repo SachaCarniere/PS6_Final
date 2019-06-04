@@ -49,4 +49,9 @@ public class MainActivity extends AppCompatActivity implements RequestListener {
     public void onRequestFailure(String error) {
         nextStudentText.setText(error);
     }
+
+    @Override
+    public void onRequestFailure2(String error) {
+        numberStudent.setText(error);
+    }
 }

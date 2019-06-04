@@ -43,7 +43,7 @@ public class StudentService {
                 response -> {
              listener.onRequestSuccess(Integer.parseInt(response));
         },
-            error -> listener.onRequestFailure(error.toString())
+            error -> listener.onRequestFailure2(error.toString())
         );
         queue.add(request);
     }
