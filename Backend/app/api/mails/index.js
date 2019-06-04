@@ -23,14 +23,12 @@ router.get('/:userId', (req, res) => {
       const user = User.getById(req.params.userId);
       res.status(200).json(getMailsByUser(user.id));
     }
-  }
-  catch (err) {
+  } catch (err) {
     if (err.name === 'ValidationError') {
       res.status(400).json(err.extra);
     } else {
       res.status(500).json(err);
     }
-
   }
 });
 
@@ -47,9 +45,9 @@ router.post('/', (req, res) => {
   }
 });
 
-router.put('/:mailId', (req, res) => {
+router.put('/:id', (req, res) => {
   try {
-    Mail.update(req.params.mailId, req.body);
+    Mail.update(req.params.id, req.body);
     res.status(200).json('updated');
   } catch (err) {
     if (err.name === 'ValidationError') {
@@ -60,10 +58,10 @@ router.put('/:mailId', (req, res) => {
   }
 });
 
-router.delete('/:mailId', (req, res) => {
+router.delete('/:id', (req, res) => {
   try {
-    Mail.delete(req.params.mailId);
-    res.status(200).json('updated');
+    Mail.delete(req.params.id);
+    res.status(200).json('deleted');
   } catch (err) {
     if (err.name === 'ValidationError') {
       res.status(400).json(err.extra);

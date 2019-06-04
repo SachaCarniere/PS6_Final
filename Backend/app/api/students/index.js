@@ -15,7 +15,19 @@ function getStudentsByMajor(major) {
   return studentsInMajor;
 }
 
-router.get('/:userId', (req, res) => {
+router.get('/:id', (req, res) => {
+  try {
+    res.status(200).json(Student.getById(req.params.id));
+  } catch (err) {
+    if (err.name === 'ValidationError') {
+      res.status(400).json(err.extra);
+    } else {
+      res.status(500).json(err);
+    }
+  }
+});
+
+router.get('/list/:userId', (req, res) => {
   try {
     if (req.params.userId < 0) {
       res.status(401).json('Please log in');
@@ -32,10 +44,10 @@ router.get('/:userId', (req, res) => {
   }
 });
 
-router.put('/:studentId', (req, res) => {
+router.put('/:id', (req, res) => {
   try {
-    Student.update(req.params.studentId, req.body);
-    res.status(200).json(Student.getById(req.params.studentId));
+    Student.update(req.params.id, req.body);
+    res.status(200).json(Student.getById(req.params.id));
   } catch (err) {
     if (err.name === 'ValidationError') {
       res.status(400).json(err.extra);
