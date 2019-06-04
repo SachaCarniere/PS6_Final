@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Student} from "../../../models/student";
+import {Queue} from "../../../models/queue";
+import {AppointmentService} from "../../../services/appointment.service";
+import {StudentService} from "../../../services/student.service";
 
 @Component({
   selector: 'app-appointment-list',
@@ -9,23 +12,28 @@ import {Student} from "../../../models/student";
 
 export class AppointmentListComponent implements OnInit {
 
-  studentsInQueue: Student[] = [
-    { id: 11, firstName: 'Dr Nice' },
-    { id: 12, firstName: 'Narco' },
-    { id: 13, firstName: 'Bombasto' },
-    { id: 14, firstName: 'Celeritas' },
-    { id: 15, firstName: 'Magneta' },
-    { id: 16, firstName: 'RubberMan' },
-    { id: 17, firstName: 'Dynama' },
-    { id: 18, firstName: 'Dr IQ' },
-    { id: 19, firstName: 'Magma' },
-    { id: 20, firstName: 'Tornado' }
-  ];
+  studentsInQueue: Student[] = [];
+
+  private queue: Queue;
 
   displayedColumns: string[] = ['firstName', 'id'];
   dataSource = this.studentsInQueue;
 
-  constructor() {
+  constructor(private appointmentService: AppointmentService, private studentService: StudentService) {
+    this.getQueue();
+    this.getStudents();
+  }
+
+  getQueue(): void {
+    this.queue = this.appointmentService.getQueue();
+  }
+
+  getStudents() {
+    for (let studentId of this.queue.queue) {
+      if(this.studentService.getStudentById(studentId)) {
+        this.studentsInQueue.push(this.studentService.getStudentById(studentId));
+      }
+    }
   }
 
   ngOnInit(): void {
