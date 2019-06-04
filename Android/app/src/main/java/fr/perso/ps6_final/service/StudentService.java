@@ -31,7 +31,7 @@ public class StudentService {
                     Gson gson = new Gson();
                     listener.onRequestSuccess(gson.fromJson(response.toString(), Student.class));
                 },
-                error -> listener.onRequestFailure(error.toString())
+                error -> listener.onRequestFailure("Il n'y a plus d'étudiants")
         );
         queue.add(request);
     }
@@ -43,7 +43,7 @@ public class StudentService {
                 response -> {
              listener.onRequestSuccess(Integer.parseInt(response));
         },
-            error -> listener.onRequestFailure2(error.toString())
+            error -> listener.onRequestFailure2("Oopsi doopsie")
         );
         queue.add(request);
     }
