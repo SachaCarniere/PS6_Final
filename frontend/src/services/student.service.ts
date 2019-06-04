@@ -39,7 +39,7 @@ export class StudentService {
   }
 
   public getStudents() {
-    this.http.get<Student[]>(this.url + ((this.authenticationService.currentUserValue !== null) ? this.authenticationService.currentUserValue.id : '-1'))
+    this.http.get<Student[]>(this.url + 'list/' + ((this.authenticationService.currentUserValue !== null) ? this.authenticationService.currentUserValue.id : '-1'))
       .subscribe(students => {
         for (const student of students)/*let i = 0; i < students.length; i++)*/ {
           this.allStudent.push(StudentService.buildStudent(student));
