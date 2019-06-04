@@ -63,3 +63,6 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
+frontend/package.json
+frontend/package-lock.json
+Backend/package-lock.json
