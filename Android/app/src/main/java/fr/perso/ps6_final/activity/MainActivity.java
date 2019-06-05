@@ -1,6 +1,5 @@
 package fr.perso.ps6_final.activity;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
@@ -14,7 +13,6 @@ import fr.perso.ps6_final.service.StudentService;
 public class MainActivity extends AppCompatActivity implements RequestListener {
 
     private final StudentService STUDENT_SERVICE = new StudentService(this, this);
-
     private TextView nextStudentText;
     private Button nextStudentButton;
     private TextView numberStudent;
@@ -41,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements RequestListener {
     }
 
     @Override
-    public void onRequestSuccess(String number){
+    public void onRequestSuccess(String number) {
         numberStudent.setText(number);
     }
 

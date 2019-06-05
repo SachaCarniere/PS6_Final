@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PS6_FINAL</string>
+    <string name="next">Suivant</string>
+    <string name="number_of_students_left">Nombre d\'étudiants restants :</string>
 </resources>
