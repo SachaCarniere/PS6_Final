@@ -14,8 +14,8 @@ import fr.perso.ps6_final.model.Student;
 
 public class StudentService {
     // TODO : CHANGE THAT WITH YOUR IP
-    private String url = "http://10.212.117.20:1880/next";
-    private String url2 = "http://10.212.117.20:1880/studentleft";
+    private String url = "http://10.212.99.67:1880/next";
+    private String url2 = "http://10.212.99.67:1880/studentleft";
     private Context context;
     private RequestListener listener;
 

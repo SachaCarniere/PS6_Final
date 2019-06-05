@@ -6,6 +6,25 @@ const { LogInStruct } = require('../../../models');
 
 const router = new Router();
 
+async function authenticate({ emailAddress, password }) {
+  const logins = LogInStruct.get();
+  let user;
+  for (const i in logins) {
+    if (emailAddress === logins[i].emailAddress) {
+      if (password === logins[i].password) {
+        user = User.getById(logins[i].userId);
+      }
+    }
+  }
+  if (user) {
+    const token = jwt.sign({ sub: user.id }, config.secret);
+    return {
+      user,
+      token,
+    };
+  }
+}
+
 router.post('/', (req, res, next) => {
   authenticate(req.body)
     .then(user => (user ? res.status(200).json(user) : res.status(400).json({ message: 'Username or password is incorrect' })))
@@ -28,21 +47,3 @@ module.exports = router;
   return -2;
 } */
 
-async function authenticate({ emailAddress, password }) {
-  const logins = LogInStruct.get();
-  let user;
-  for (const i in logins) {
-    if (emailAddress === logins[i].emailAddress) {
-      if (password === logins[i].password) {
-        user = User.getById(logins[i].userId);
-      }
-    }
-  }
-  if (user) {
-    const token = jwt.sign({ sub: user.id }, config.secret);
-    return {
-      user,
-      token,
-    };
-  }
-}
