@@ -3,6 +3,7 @@ import {Student} from "../../../models/student";
 import {Queue} from "../../../models/queue";
 import {AppointmentService} from "../../../services/appointment.service";
 import {StudentService} from "../../../services/student.service";
+import {MatTableDataSource} from "@angular/material";
 
 @Component({
   selector: 'app-appointment-list',
@@ -17,15 +18,13 @@ export class AppointmentListComponent implements OnInit {
   private queue: Queue;
 
   displayedColumns: string[] = ['firstName', 'id'];
-  dataSource = this.studentsInQueue;
+  dataSource: MatTableDataSource<Student>;
 
   constructor(private appointmentService: AppointmentService, private studentService: StudentService) {
-    this.getQueue();
-    this.getStudents();
-  }
-
-  getQueue(): void {
-    this.queue = this.appointmentService.getQueue();
+    this.appointmentService.queue$.subscribe(queue => {
+      this.queue = queue;
+      this.getStudents();
+    });
   }
 
   getStudents() {
@@ -34,6 +33,7 @@ export class AppointmentListComponent implements OnInit {
         this.studentsInQueue.push(this.studentService.getStudentById(studentId));
       }
     }
+    this.dataSource = new MatTableDataSource(this.studentsInQueue);
   }
 
   ngOnInit(): void {
