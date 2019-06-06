@@ -3,11 +3,11 @@ package fr.perso.ps6_final.listener;
 import fr.perso.ps6_final.model.Student;
 
 public interface RequestListener {
-    void onRequestSuccess(Student response);
+    void onRequestSuccess1(String string);
 
-    void onRequestFailure(String error);
+    void onRequestFailure1(String error);
 
-    void onRequestSuccess(String number);
+    void onRequestSuccess2(String string);
 
     void onRequestFailure2(String error);
 }
