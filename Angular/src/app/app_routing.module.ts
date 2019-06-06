@@ -9,6 +9,7 @@ import {AuthGuardService} from '../services/authGuard.service';
 import {RemindersComponent} from './reminders/reminders.component';
 import {FiltersComponent} from './filters/filters.component';
 import {AppointmentComponent} from './appointments';
+import {AppointmentStudentComponent} from './app_student/appointment_student';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'reminders', component: RemindersComponent, canActivate: [AuthGuardService]},
   {path: 'mails', component: MailListComponent, canActivate: [AuthGuardService]},
   {path: 'appointments', component: AppointmentComponent, canActivate: [AuthGuardService]},
+  {path: 'appointment-student', component: AppointmentStudentComponent, canActivate: [AuthGuardService]},
   {path: '**', redirectTo: ''}
 ];
 
