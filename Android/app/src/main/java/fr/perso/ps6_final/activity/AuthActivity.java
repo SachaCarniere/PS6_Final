@@ -8,12 +8,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import fr.perso.ps6_final.R;
-import fr.perso.ps6_final.listener.AuthRequestListener;
+import fr.perso.ps6_final.listener.AuthListener;
 import fr.perso.ps6_final.model.User;
-import fr.perso.ps6_final.service.AuthService;
 
 
-public class AuthActivity extends Activity implements AuthRequestListener {
+public class AuthActivity extends Activity implements AuthListener {
 
     private final AuthService AUTH_SERVICE = new AuthService(this, this);
 
