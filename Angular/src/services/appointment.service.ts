@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {AuthenticationService} from './authentication.service';
 import {Queue} from '../models/queue';
 import {BehaviorSubject} from 'rxjs';
+import {Filter} from "../models/filter";
+import {Countries, Status, Student} from "../models/student";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ import {BehaviorSubject} from 'rxjs';
 export class AppointmentService {
   private url = 'http://localhost:9428/api/queues/';
 
-  private queue: Queue = {id:-1, name:"", queue:[]};
+  public queue: Queue = {id:-1, name:"", queue:[]};
   public queue$: BehaviorSubject<Queue> = new BehaviorSubject(this.queue);
 
   constructor(private http: HttpClient, private authenticationService: AuthenticationService) {
@@ -23,5 +25,15 @@ export class AppointmentService {
         this.queue=queues[0];
         this.queue$.next(this.queue);
       });
+  }
+  public updateQueue(queue: Queue) {
+    this.http.put(this.url, {
+      name: queue.name,
+      queue: queue.queue
+    }).subscribe(updatedQueue => {
+      queue.queue = updatedQueue['queue'];
+
+      this.queue$.next(this.queue);
+    });
   }
 }

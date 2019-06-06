@@ -52,8 +52,9 @@ import { ReminderPopUpItemComponent } from './reminders/reminder-pop-up-item/rem
 import {AppointmentComponent} from './appointments';
 import {AppointmentListComponent} from './appointments/appointment-list';
 import {AppointmentAvailableComponent} from './appointments/appointment-available';
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import {AmazingTimePickerModule} from 'amazing-time-picker';
+import {AppointmentStudentComponent} from './app_student/appointment_student';
+import {HeaderStudentComponent} from './app_student/header_student';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,9 @@ import {AmazingTimePickerModule} from 'amazing-time-picker';
     ReminderPopUpItemComponent,
     AppointmentComponent,
     AppointmentListComponent,
-    AppointmentAvailableComponent
+    AppointmentAvailableComponent,
+    AppointmentStudentComponent,
+    HeaderStudentComponent
   ],
   imports: [
     BrowserModule,
