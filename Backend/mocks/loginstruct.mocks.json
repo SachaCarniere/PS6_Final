@@ -10,5 +10,11 @@
     "emailAddress": "user",
     "password": "pns",
     "userId": 1
+  },
+  {
+    "id": 2,
+    "emailAddress": "louise.martin@univ-cotedazur.fr",
+    "password": "pns",
+    "userId": 21602375
   }
 ]

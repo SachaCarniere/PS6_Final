@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    AuthenticationService.logout();
+    this.authenticationService.logout();
     this.route.queryParams.subscribe(params => this.return = params['return'] || '/students');
   }
 
@@ -34,7 +34,12 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate([this.return]);
+          if(data.minor == undefined){
+            this.router.navigate([this.return]);
+          }
+          else {
+            this.router.navigate(['/appointment-student']);
+          }
         },
         error => {
           this.loginForm.reset();

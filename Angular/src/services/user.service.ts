@@ -3,6 +3,7 @@ import {User} from '../models/user';
 import {BehaviorSubject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {AuthenticationService} from './authentication.service';
+import {Student} from "../models/student";
 
 @Injectable({
   providedIn: 'root'

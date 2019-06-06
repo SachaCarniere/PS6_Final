@@ -13,6 +13,7 @@ export interface Student {
   minorFullName?: string;
   statusFullName?: string;
   locationFullName?: string;
+  headTeacherId?: number;
 }
 
 export enum Status {

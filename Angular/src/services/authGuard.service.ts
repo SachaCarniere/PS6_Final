@@ -11,9 +11,11 @@ export class AuthGuardService implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this.authenticationService.currentUserValue !== null) {
+    if (this.authenticationService.currentUserValue !== (null || undefined) || this.authenticationService.currentStudent !== (null || undefined)) {
+      console.log('oui ?');
       return true;
     } else {
+      console.log('oui 2?');
       this.router.navigate(['/login'], {
         queryParams: {
           return: state.url

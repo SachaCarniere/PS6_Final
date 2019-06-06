@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../../../config.json');
 const { User } = require('../../../models');
 const { LogInStruct } = require('../../../models');
+const { Student } = require('../../../models');
 
 const router = new Router();
 
@@ -12,12 +13,17 @@ async function authenticate({ emailAddress, password }) {
   for (const i in logins) {
     if (emailAddress === logins[i].emailAddress) {
       if (password === logins[i].password) {
-        user = User.getById(logins[i].userId);
+        try {
+          user = User.getById(logins[i].userId);
+        } catch (e) {
+          user = Student.getById(logins[i].userId);
+        }
       }
     }
   }
   if (user) {
     const token = jwt.sign({ sub: user.id }, config.secret);
+    console.log(user);
     return {
       user,
       token,
@@ -46,4 +52,3 @@ module.exports = router;
   }
   return -2;
 } */
-

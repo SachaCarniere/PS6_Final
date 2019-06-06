@@ -4,6 +4,7 @@ import {DialogChooseMailComponent} from "./mails/dialog-choose-mail";
 import {MatDialog} from "@angular/material";
 import {ReminderPopUpComponent} from "./reminders/reminder-pop-up/reminder-pop-up.component";
 import {ReminderService} from "../services/reminder.service";
+import {AuthenticationService} from "../services/authentication.service";
 
 @Component({
   selector: 'app-root',
@@ -13,15 +14,23 @@ import {ReminderService} from "../services/reminder.service";
 export class AppComponent {
   title = 'frontend';
 
-  showHead: boolean = false;
+  showHead: boolean = true;
+  studentHeader: boolean;
 
-  constructor(private router: Router, private dialog: MatDialog, private reminderService: ReminderService) {
+  constructor(private router: Router, private dialog: MatDialog, private reminderService: ReminderService, private authenticationService: AuthenticationService) {
 
     // on route change to '/login', set the variable showHead to false
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
         const regExp = /\/login*/;
         this.showHead = !regExp.test(event['url']);
+      }
+    });
+
+    router.events.forEach((event) => {
+      if (event instanceof NavigationStart) {
+        const regExp = /\/appointment-student*/;
+        this.studentHeader = regExp.test(event['url']);
       }
     });
 

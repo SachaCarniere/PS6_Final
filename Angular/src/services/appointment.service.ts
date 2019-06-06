@@ -3,8 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {AuthenticationService} from './authentication.service';
 import {Queue} from '../models/queue';
 import {BehaviorSubject} from 'rxjs';
-import {Filter} from "../models/filter";
-import {Countries, Status, Student} from "../models/student";
 
 @Injectable({
   providedIn: 'root'
@@ -16,18 +14,27 @@ export class AppointmentService {
   public queue$: BehaviorSubject<Queue> = new BehaviorSubject(this.queue);
 
   constructor(private http: HttpClient, private authenticationService: AuthenticationService) {
-    this.getQueueByUserId(this.authenticationService.currentUserValue.id);
+    this.getQueueByUser();
   }
 
-  public getQueueByUserId(id){
-    this.http.get<Queue[]>(this.url + ((this.authenticationService.currentUserValue !== null) ? this.authenticationService.currentUserValue.id : '-1'))
+  public getQueueByUser(){
+    var userId;
+    if (this.authenticationService.currentStudent !== (null || undefined)){
+      userId = this.authenticationService.currentStudent.headTeacherId;
+      console.log(userId);
+
+    } else {
+      userId = this.authenticationService.currentUserValue.id;
+    }
+    this.http.get<Queue[]>(this.url + userId)
       .subscribe(queues => {
         this.queue=queues[0];
         this.queue$.next(this.queue);
       });
   }
+
   public updateQueue(queue: Queue) {
-    this.http.put(this.url, {
+    this.http.put(this.url + queue.id, {
       name: queue.name,
       queue: queue.queue
     }).subscribe(updatedQueue => {

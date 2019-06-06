@@ -14,7 +14,7 @@ import {AppointmentStudentComponent} from './app_student/appointment_student';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
 
-  {path: '', component: StudentContainerComponent, canActivate: [AuthGuardService]},
+  {path: '', component: LoginComponent},
   {path: 'students', component: StudentContainerComponent, canActivate: [AuthGuardService]},
   {path: 'students/:id', component: StudentDetailsComponent, canActivate: [AuthGuardService]},
   {path: 'filters', component: FiltersComponent, canActivate: [AuthGuardService]},

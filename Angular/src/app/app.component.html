@@ -1,2 +1,3 @@
-<app-header *ngIf="showHead"></app-header>
+<app-header *ngIf="showHead && !studentHeader"></app-header>
+<app-header-student *ngIf="showHead && studentHeader"></app-header-student>
 <router-outlet></router-outlet>

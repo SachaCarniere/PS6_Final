@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../../models/user';
 import {AppointmentService} from '../../../services/appointment.service';
-import {UserService} from '../../../services/user.service';
 import {Student} from '../../../models/student';
+import {AuthenticationService} from '../../../services/authentication.service';
 
 @Component({
   selector: 'app-appointment-student',
@@ -12,35 +12,26 @@ import {Student} from '../../../models/student';
 export class AppointmentStudentComponent implements OnInit {
 
   student: Student;
-  headTeacher: User;
+  register = false;
+  // headTeacher: User;
 
-  constructor(private appointmentService: AppointmentService, private userService: UserService) {
+  constructor(private appointmentService: AppointmentService, private authenticationService: AuthenticationService) {
     this.getStudent();
-    this.getHeadTeacher();
   }
 
   ngOnInit(): void {
   }
 
   getStudent() {
-
+    this.student = this.authenticationService.currentStudent;
   }
 
-  getHeadTeacher() {
-    switch (this.student.major) {
-      case "SI":
-        this.userService.getUserWithId(0);
-      case "MAM":
-        this.userService.getUserWithId(1);
-      default:
-        this.userService.getUserWithId(0);
-    }
-    this.headTeacher = this.userService.currentUser;
-  }
 
   addInQueue(){
-    this.appointmentService.getQueueByUserId(this.headTeacher.id);
-    this.appointmentService.queue.queue.push(this.student.id);
+    this.appointmentService.getQueueByUser();
+    if (!this.appointmentService.queue.queue.includes(this.student.id))
+      this.appointmentService.queue.queue.push(this.student.id);
     this.appointmentService.updateQueue(this.appointmentService.queue);
+    this.register=true;
   }
 }

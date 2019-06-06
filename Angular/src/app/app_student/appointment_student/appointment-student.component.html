@@ -1,6 +1,10 @@
-<div class="container d-flex">
-  <div class="title">
-    Prendre rendez-vous avec {{headTeacher.firstName}} {{headTeacher.lastName}}
+<div class="wrapper">
+  <h3 class="title">
+    Prendre rendez-vous
+  </h3>
+  <br>
+  <button class="btn btn-light" (click)="addInQueue()">S'ajouter à la file d'attente</button>
+  <div class="alert-success" *ngIf="register">
+    Vous êtes inscris dans la liste d'attente
   </div>
-  <button class="btn btn-light" onclick="addInQueue()">S'ajouter à la file d'attente</button>
 </div>
