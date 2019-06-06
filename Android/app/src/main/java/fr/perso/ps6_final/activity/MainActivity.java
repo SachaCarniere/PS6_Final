@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements MainListener {
         nextStudentButton = findViewById(R.id.main_next_student_button);
 
         nextStudentButton.setOnClickListener(v -> {
+            ((App) getApplication()).setListener(this);
             ((App) getApplication()).publish("button", "android");
         });
     }
