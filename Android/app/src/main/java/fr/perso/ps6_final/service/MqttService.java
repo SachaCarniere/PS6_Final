@@ -18,13 +18,6 @@ import fr.perso.ps6_final.App;
 import fr.perso.ps6_final.listener.AuthListener;
 import fr.perso.ps6_final.listener.MainListener;
 
-/**
- * An {@link IntentService} subclass for handling asynchronous task requests in
- * a service on a separate handler thread.
- * <p>
- * TODO: Customize class - update intent actions, extra parameters and static
- * helper methods.
- */
 public class MqttService extends IntentService {
 
     private AuthListener authListener;
@@ -48,8 +41,9 @@ public class MqttService extends IntentService {
             token.setActionCallback(new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
-                    subscribeStringIn1(client);
-                    subscribeStringIn2(client);
+                    subscribe(client, "stringIn1");
+                    subscribe(client, "stringIn2");
+                    subscribe(client, "connected");
                 }
 
                 @Override
@@ -64,12 +58,13 @@ public class MqttService extends IntentService {
 
                 @Override
                 public void messageArrived(String topic, MqttMessage message) {
+                    String response = new String(message.getPayload());
                     if (topic.equals("stringIn1")) {
-                        String response = new String(message.getPayload());
                         mainListener.stringIn1(response);
                     } else if (topic.equals("stringIn2")) {
-                        String response = new String(message.getPayload());
                         mainListener.stringIn2(response);
+                    } else if (topic.equals("connected")) {
+                        authListener.onConnected(response);
                     }
                 }
 
@@ -93,20 +88,20 @@ public class MqttService extends IntentService {
         }
     }
 
-    private void subscribeStringIn1(MqttAndroidClient client) {
+    private void subscribe(MqttAndroidClient client, String topic) {
         int qos = 0;
         try {
-            IMqttToken subToken = client.subscribe("stringIn1", qos);
+            IMqttToken subToken = client.subscribe(topic, qos);
             subToken.setActionCallback(new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
-                    Log.d("MQTT-Subscribe", "stringIn1");
+                    Log.d("MQTT-Subscribe", topic);
                 }
 
                 @Override
                 public void onFailure(IMqttToken asyncActionToken,
                                       Throwable exception) {
-                    Log.d("MQTT-Fail", "stringIn1");
+                    Log.d("MQTT-Fail", topic);
                 }
             });
         } catch (MqttException e) {
@@ -114,32 +109,11 @@ public class MqttService extends IntentService {
         }
     }
 
-    private void subscribeStringIn2(MqttAndroidClient client) {
-        int qos = 0;
-        try {
-            IMqttToken subToken = client.subscribe("userLeft", qos);
-            subToken.setActionCallback(new IMqttActionListener() {
-                @Override
-                public void onSuccess(IMqttToken asyncActionToken) {
-                    Log.d("MQTT-Subscribe", "stringIn2");
-                }
-
-                @Override
-                public void onFailure(IMqttToken asyncActionToken,
-                                      Throwable exception) {
-                    Log.d("MQTT-Fail", "stringIn2");
-                }
-            });
-        } catch (MqttException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void setMainListener(MainListener mainListener) {
+    public void setListener(MainListener mainListener) {
         this.mainListener = mainListener;
     }
 
-    public void setAuthListener(AuthListener authListener) {
+    public void setListener(AuthListener authListener) {
         this.authListener = authListener;
     }
 }

@@ -9,8 +9,8 @@
     <uses-permission android:name='android.permission.READ_PHONE_STATE' />
 
     <application
-        android:allowBackup="true"
         android:name=".App"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -18,17 +18,17 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <service android:name=".service.MqttService" />
-        <service android:name="org.eclipse.paho.android.service.MqttService"/>
+        <service android:name="org.eclipse.paho.android.service.MqttService" />
 
-        <activity android:name=".activity.AuthActivity"/>
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.AuthActivity">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.MainActivity" />
     </application>
 
 

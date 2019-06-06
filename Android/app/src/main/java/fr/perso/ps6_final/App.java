@@ -4,15 +4,13 @@ import android.app.Application;
 
 import org.eclipse.paho.android.service.MqttAndroidClient;
 
+import fr.perso.ps6_final.listener.AuthListener;
+import fr.perso.ps6_final.listener.MainListener;
 import fr.perso.ps6_final.service.MqttService;
 
 public class App extends Application {
     private MqttService mqttService;
     private MqttAndroidClient mqttClient;
-
-    public MqttService getMqttService() {
-        return mqttService;
-    }
 
     public void setMqttService(MqttService otherMqttService) {
         this.mqttService = otherMqttService;
@@ -26,7 +24,11 @@ public class App extends Application {
         this.mqttService.publish(this.mqttClient, topic, payload);
     }
 
-    public MqttAndroidClient getMqttClient() {
-        return mqttClient;
+    public void setListener(AuthListener listener) {
+        this.mqttService.setListener(listener);
+    }
+
+    public void setListener(MainListener listener) {
+        this.mqttService.setListener(listener);
     }
 }
