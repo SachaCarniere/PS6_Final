@@ -1,6 +1,5 @@
 package fr.perso.ps6_final.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
@@ -9,7 +8,6 @@ import android.widget.TextView;
 import fr.perso.ps6_final.App;
 import fr.perso.ps6_final.R;
 import fr.perso.ps6_final.listener.MainListener;
-import fr.perso.ps6_final.service.MqttService;
 
 public class MainActivity extends AppCompatActivity implements MainListener {
 
@@ -22,9 +20,6 @@ public class MainActivity extends AppCompatActivity implements MainListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Intent intent = new Intent(this, MqttService.class);
-        startService(intent);
 
         nextStudentText = findViewById(R.id.main_next_student_text);
         numberStudent = findViewById(R.id.main_number);

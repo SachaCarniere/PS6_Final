@@ -51,9 +51,7 @@ public class AuthActivity extends Activity implements AuthListener {
 
     @Override
     public void onConnected(String response) {
-        System.out.println(response);
         if (response.equals("true")) {
-            this.error.setText("");
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         } else {
