@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const { User } = require('../../models');
 const { LogInStruct } = require('../../models');
+const { Queue } = require('../../models');
 
 const router = new Router();
 
@@ -18,8 +19,10 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   try {
-    LogInStruct.create();
-    res.status(201).json(User.create(req.body));
+    const user = User.create(req.body);
+    res.status(201).json(user);
+    LogInStruct.create({ userId: user.id, emailAddres: user.emailAddress, password: user.password });
+    Queue.create({ queue: [], userId: user.id, name: 'none' });
   } catch (err) {
     if (err.name === 'ValidationError') {
       res.status(400).json(err.extra);

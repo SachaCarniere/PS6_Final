@@ -12,7 +12,7 @@ import fr.perso.ps6_final.service.StudentService;
 
 public class MainActivity extends AppCompatActivity implements RequestListener {
 
-    private final StudentService STUDENT_SERVICE = new StudentService(this, this);
+    private StudentService STUDENT_SERVICE;
     private TextView nextStudentText;
     private Button nextStudentButton;
     private TextView numberStudent;
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements RequestListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        STUDENT_SERVICE = new StudentService(this, this);
 
         nextStudentText = findViewById(R.id.main_next_student_text);
         numberStudent = findViewById(R.id.main_number);
@@ -34,17 +35,17 @@ public class MainActivity extends AppCompatActivity implements RequestListener {
     }
 
     @Override
-    public void onRequestSuccess(Student response) {
-        nextStudentText.setText(response.getFirstName());
+    public void onRequestSuccess1(String s) {
+        nextStudentText.setText(s);
     }
 
     @Override
-    public void onRequestSuccess(String number) {
+    public void onRequestSuccess2(String number) {
         numberStudent.setText(number);
     }
 
     @Override
-    public void onRequestFailure(String error) {
+    public void onRequestFailure1(String error) {
         nextStudentText.setText(error);
     }
 

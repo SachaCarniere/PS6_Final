@@ -27,7 +27,7 @@ router.get('/:userId', (req, res) => {
   }
 });
 
-router.post('/', (req, res) => {
+/* router.post('/', (req, res) => {
   try {
     const item = Object.assign({}, req.body, { queue: [] });
     const queue = Queue.create(item);
@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
       res.status(500).json(err);
     }
   }
-});
+}); */
 
 router.put('/:id', (req, res) => {
   try {
