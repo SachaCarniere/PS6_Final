@@ -1,3 +1,6 @@
+  Scénarios Initiaux :
+
+
 Scénario Lundi 03/06/2019 :
 Dans ce premier scénario, Anne-Marie PINNA souhaite savoir quel est son prochain rendez-vous c'est-à-dire l'heure et l'étudiant concerné.
 Elle va donc ouvrir son application mobile et appuyer sur le bouton "Suivant". Les informations concernant son prochain rendez-vous sont
@@ -17,7 +20,10 @@ Un étudiant se pose des questions concernant sa mobilité à l'international ma
 prendre rendez-vous avec son responsable pédagogique. Il va donc se rendre sur le site et se connecter avec ses identifiants.
 Il peut alors choisir un horaire de rendez-vous parmis les disponibilités de son responsable qui sera ensuite notifié par mail. 
 
-Scénario Final :
+
+  Scénarios Finaux :
+
+
 Anne-Marie Pinna se connecte sur le site pour consulter sa liste de rendez-vous.
 Louise Martin se pose des questions concernant sa mobilité à l'international mais ne trouve pas de réponse sur internet.
 Elle va donc se connecter au site pour prendre rendez-vous avec son responsable pédagogique en cliquant sur "S'ajouter à la file d'attente".
