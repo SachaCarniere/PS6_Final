@@ -16,3 +16,18 @@ Scénarios Étudiant :
 Un étudiant se pose des questions concernant sa mobilité à l'international mais ne trouve pas de réponse sur internet. Il souhaite donc
 prendre rendez-vous avec son responsable pédagogique. Il va donc se rendre sur le site et se connecter avec ses identifiants.
 Il peut alors choisir un horaire de rendez-vous parmis les disponibilités de son responsable qui sera ensuite notifié par mail. 
+
+Scénario Final :
+Anne-Marie Pinna se connecte sur le site pour consulter sa liste de rendez-vous.
+Louise Martin se pose des questions concernant sa mobilité à l'international mais ne trouve pas de réponse sur internet.
+Elle va donc se connecter au site pour prendre rendez-vous avec son responsable pédagogique en cliquant sur "S'ajouter à la file d'attente".
+Si Anne-Marie consulte de nouveau la liste de rendez-vous, elle verra apparaître Louise à la fin de celle-ci.
+
+Viens le jour des rendez-vous, Anne-Marie ouvre l'application et se connecte.
+Elle commence les entretiens en appuyant sur "Next". Elle peut maintenant voir sur l'appli le nombre d'étudiants restant ainsi 
+que le nom de l'étudiant actuel.
+Le bouton "Next" permet de passer à l'étudiant suivant et donc de décrémenter le nombre d'étudiant restant.
+
+De son côté, le responsable des MAM utilise la raspberry pour gérer ses rendez-vous.
+Lorsqu'un rendez-vous est terminé, il appuit sur le bouton pour passer à l'étudiant suivant.
+Le bouton clignote quand il n'y a plus d'étudiant.
